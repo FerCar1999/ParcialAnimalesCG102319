@@ -27,7 +27,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Animal.findById", query = "SELECT a FROM Animal a WHERE a.id = :id"),
     @NamedQuery(name = "Animal.findByName", query = "SELECT a FROM Animal a WHERE a.name = :name"),
     @NamedQuery(name = "Animal.findByScientificName", query = "SELECT a FROM Animal a WHERE a.scientificName = :scientificName"),
-    @NamedQuery(name = "Animal.findByFamily", query = "SELECT a FROM Animal a WHERE a.family = :family")})
+    @NamedQuery(name = "Animal.findByFamily", query = "SELECT a FROM Animal a WHERE a.family = :family"),
+    @NamedQuery(name = "Animal.deleteById", query = "DELETE FROM Animal a WHERE a.id = :id")})
 public class Animal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +46,25 @@ public class Animal implements Serializable {
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     @ManyToOne
     private Categoria idCategoria;
-
+    
     public Animal() {
+    }
+
+    public Animal(String name, String scientificName, String family, Categoria idCategoria) {
+        this.name = name;
+        this.scientificName = scientificName;
+        this.family = family;
+        this.idCategoria = idCategoria;
+    }
+    
+
+    public Animal(Integer id, String name, String scientificName, String family, Categoria idCategoria) {
+        this.id = id;
+        this.name = name;
+        this.scientificName = scientificName;
+        this.family = family;
+        this.idCategoria = idCategoria;
+        
     }
 
     public Animal(Integer id) {
