@@ -1,2 +1,6 @@
-com\mycompany\parcialanimalescg102319\JAXRSConfiguration.class
 com\mycompany\parcialanimalescg102319\resources\JavaEE8Resource.class
+com\mycompany\parcialanimalescg102319\AnimalC.class
+com\mycompany\parcialanimalescg102319\CategoriaC.class
+com\mycompany\parcialanimalescg102319\JAXRSConfiguration.class
+com\mycompany\parcialanimalescg102319\models\Animal.class
+com\mycompany\parcialanimalescg102319\models\Categoria.class

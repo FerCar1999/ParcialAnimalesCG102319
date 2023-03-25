@@ -4,7 +4,9 @@
  */
 package com.mycompany.parcialanimalescg102319;
 
+import com.mycompany.parcialanimalescg102319.models.Animal;
 import com.mycompany.parcialanimalescg102319.models.Categoria;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -30,8 +32,20 @@ public class CategoriaC {
             EntityManager em = emf.createEntityManager();
             EntityTransaction tx = em.getTransaction();
             tx.begin();
-            TypedQuery<Categoria> categorias = em.createNamedQuery("Categoria.findAll",Categoria.class);
-            System.out.println(categorias.getResultList());
+            Query categorias = em.createNativeQuery("select * from categoria");
+            List<Categoria> c = categorias.getResultList();
+            for (Categoria categoria : c) {
+                System.out.println("");
+                System.out.println(categoria.getId());
+                System.out.println(categoria.getName());
+                System.out.println("Animales que pertenecen");
+                for (Animal animal : categoria.getAnimalList()) {
+                    System.out.println("------");
+                    System.out.println(animal.getId());
+                    System.out.println(animal.getName());
+                    System.out.println(animal.getScientificName());
+                }
+            }
             tx.commit();
             em.close();
     }
@@ -42,7 +56,7 @@ public class CategoriaC {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
             Categoria c = em.find(Categoria.class, id);
-            System.out.println(c);
+            System.out.println(c.getName());
             tx.commit();
             em.close();
     }
