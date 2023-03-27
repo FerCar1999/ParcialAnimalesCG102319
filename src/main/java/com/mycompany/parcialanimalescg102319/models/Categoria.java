@@ -7,6 +7,7 @@ package com.mycompany.parcialanimalescg102319.models;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,7 +36,7 @@ public class Categoria implements Serializable {
     private Integer id;
     @Size(max = 200)
     private String name;
-    @OneToMany(mappedBy = "idCategoria",orphanRemoval = true)
+    @OneToMany(mappedBy = "idCategoria",cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Animal> animalList;
 
     public Categoria() {

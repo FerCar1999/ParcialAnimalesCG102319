@@ -89,6 +89,11 @@ public class CategoriaC {
             EntityManager em = emf.createEntityManager();
             EntityTransaction tx = em.getTransaction();
             tx.begin();
+            Categoria c = em.find(Categoria.class, id);
+            for (Animal animal : c.getAnimalList()) {
+                Query query = em.createNamedQuery("Animal.deleteById", Animal.class);
+                query.setParameter("id", animal.getId()).executeUpdate();
+            }
             Query query = em.createNamedQuery("Categoria.deleteById", Categoria.class);
             int delete = query.setParameter("id", id).executeUpdate();
             System.out.println(delete);
