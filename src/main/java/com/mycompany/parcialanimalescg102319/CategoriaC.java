@@ -20,10 +20,10 @@ import javax.persistence.TypedQuery;
  */
 public class CategoriaC {
     public static void main(String[] args) {
-        //crear("Aves");
+        //crear("Mamifero");
         //modificar(2, "Reptiles");
-        lista();
-        //eliminar(2);
+        //lista();
+        eliminar(2);
         //uno(1);
     }
     
@@ -32,7 +32,7 @@ public class CategoriaC {
             EntityManager em = emf.createEntityManager();
             EntityTransaction tx = em.getTransaction();
             tx.begin();
-            Query categorias = em.createNativeQuery("select * from categoria");
+            Query categorias = em.createNativeQuery("select * from categoria", Categoria.class);
             List<Categoria> c = categorias.getResultList();
             for (Categoria categoria : c) {
                 System.out.println("");
