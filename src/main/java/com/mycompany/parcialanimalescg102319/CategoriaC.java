@@ -22,8 +22,8 @@ public class CategoriaC {
     public static void main(String[] args) {
         //crear("Aves");
         //modificar(2, "Reptiles");
-        //lista();
-        eliminar(2);
+        lista();
+        //eliminar(2);
         //uno(1);
     }
     
